@@ -1,6 +1,6 @@
 # Interactive pricing component
 
-Mobile only Demo [Interactive pricing component](). 
+Mobile only Demo [Interactive pricing component](https://chimerical-churros-a22ca8.netlify.app/). 
 
 ### Range Data
 
