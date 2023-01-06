@@ -1,0 +1,365 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@600;800&display=swap");
+body, h1, h2, h3, h4, h5, h6, p, ol, ul, a, button {
+  line-height: 2rem;
+  font-family: "Manrope", sans-serif;
+  font-size: 13.5px;
+  font-weight: 600 !important;
+  color: hsl(225deg, 20%, 60%);
+  letter-spacing: 0.3px;
+}
+
+h1 {
+  font-size: 21px;
+  color: hsl(227deg, 35%, 25%);
+  font-weight: 800 !important;
+  margin-bottom: 11px !important;
+}
+
+main {
+  width: 100vw;
+  height: 100vh;
+  background: hsl(230deg, 100%, 99%);
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+main .title-container {
+  background: url("../images/bg-pattern.svg") no-repeat;
+  background-size: auto;
+  width: 100vw;
+  height: 50vh;
+  position: fixed;
+  top: 0;
+  padding: 4vw;
+  display: grid;
+  place-items: center;
+}
+@media (min-width: 768px) {
+  main .title-container {
+    background-size: contain;
+  }
+}
+main .title-container .title {
+  position: absolute;
+  top: 9vh;
+  z-index: 5;
+}
+main .title-container .title h3 {
+  max-width: 50vw;
+  margin: auto;
+}
+main .title-container .circles {
+  position: absolute;
+  top: -11vh;
+  z-index: 3;
+  background: url("../images/pattern-circles.svg") center no-repeat;
+  height: 100%;
+  width: 100%;
+  opacity: 0.7;
+  transition: 1.8s ease;
+}
+
+#pricer .pricer-container {
+  background: hsl(0deg, 0%, 100%);
+  position: fixed;
+  top: 27vh;
+  z-index: 10;
+  width: 90vw;
+  padding: 4vw;
+  border-radius: 10px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+#pricer .pricer-container .pageview-number {
+  text-transform: uppercase;
+  letter-spacing: 1.8px !important;
+  font-weight: 600 !important;
+  line-height: 3.2rem;
+}
+#pricer .price-container {
+  line-height: 3.2rem;
+  /* Rounded sliders */
+}
+#pricer .price-container .price {
+  color: hsl(227deg, 35%, 25%);
+  font-size: 32px;
+}
+#pricer .price-container .price::before {
+  content: "£";
+}
+#pricer .price-container .toggle-billing-container {
+  padding: 4vw;
+  line-height: 3.2rem;
+}
+#pricer .price-container .toggle-billing-container .grid {
+  display: grid;
+  grid-template-columns: 35% 20% 45%;
+  place-items: center;
+}
+#pricer .price-container .toggle-billing-container p {
+  font-size: 9px;
+}
+#pricer .price-container .toggle-billing-container p:first-child {
+  text-align: right;
+  text-indent: 14px;
+}
+#pricer .price-container .toggle-billing-container p:last-child {
+  text-align: left;
+}
+#pricer .price-container .toggle-billing-container p span {
+  background: hsl(14deg, 92%, 95%);
+  color: hsl(15deg, 100%, 70%);
+  line-height: 2rem;
+  border-radius: 50px;
+  padding: 4px 6px;
+  margin-left: 1px;
+}
+#pricer .price-container .switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+#pricer .price-container .switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  cursor: pointer;
+}
+#pricer .price-container .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: hsl(224deg, 65%, 95%);
+  transition: 0.4s;
+}
+#pricer .price-container .slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+}
+#pricer .price-container input:checked + .slider {
+  background-color: hsl(174deg, 86%, 45%);
+}
+#pricer .price-container input:focus + .slider {
+  box-shadow: 0 0 1px hsl(174deg, 86%, 45%);
+}
+#pricer .price-container input:checked + .slider:before {
+  transform: translateX(26px);
+}
+#pricer .price-container .slider.round {
+  border-radius: 34px;
+}
+#pricer .price-container .slider.round:before {
+  border-radius: 50%;
+}
+#pricer .lower--grid {
+  display: grid;
+  place-content: center;
+  margin: 11px 0;
+}
+#pricer .lower--grid ul {
+  list-style-image: url("../images/icon-check.svg");
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  margin-bottom: 11px;
+  max-width: 162px;
+}
+#pricer .lower--grid ul li {
+  line-height: 2rem;
+  font-size: 600;
+  font-size: 12px;
+}
+#pricer .btn--container {
+  display: grid;
+  place-content: center;
+  margin: 11px 0;
+}
+#pricer .btn--container button {
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  background: hsl(227deg, 35%, 25%);
+  color: hsl(226deg, 100%, 87%);
+  padding: 5px 38px;
+  border-radius: 50px;
+  opacity: 0.98;
+  transition: 0.2s ease-in;
+}
+#pricer .btn--container button:hover {
+  opacity: 1;
+  color: hsl(0deg, 0%, 100%);
+  scale: 1.05;
+}
+
+input[type=range] progress {
+  -webkit-appearance: none;
+}
+
+input[type=range]::-webkit-progress-value {
+  background-color: red;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+       appearance: none;
+  margin: 15px 0;
+  width: 100%;
+  transition: 0.2s;
+  background-color: hsl(174deg, 77%, 80%);
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: hsl(174deg, 77%, 80%);
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: hsl(174deg, 77%, 80%);
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: hsl(224deg, 65%, 95%);
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 9px;
+  cursor: pointer;
+  background: hsl(224deg, 65%, 95%);
+  border-radius: 5px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  position: relative;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  height: 33px;
+  width: 33px;
+  border-radius: 100%;
+  background: hsl(174deg, 86%, 45%);
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -11px;
+  -webkit-transition: 0.4s ease;
+  transition: 0.4s ease;
+  background-image: url("../images/icon-slider.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+input[type=range]::-webkit-slider-thumb:active {
+  box-shadow: hsl(174deg, 77%, 80%) 0px 54px 55px, hsl(174deg, 77%, 80%) 0px -12px 30px, hsl(174deg, 77%, 80%) 0px 4px 6px, hsl(174deg, 77%, 80%) 0px 12px 13px, hsl(174deg, 77%, 80%) 0px -3px 5px;
+  opacity: 0.8;
+}
+input[type=range]::-webkit-slider-thumb:hover {
+  box-shadow: hsl(174deg, 77%, 80%) 0px 54px 55px, hsl(174deg, 77%, 80%) 0px -12px 30px, hsl(174deg, 77%, 80%) 0px 4px 6px, hsl(174deg, 77%, 80%) 0px 12px 13px, hsl(174deg, 77%, 80%) 0px -3px 5px;
+  opacity: 0.8;
+}
+input[type=range]::-webkit-slider-thumb:focus {
+  box-shadow: hsl(174deg, 77%, 80%) 0px 54px 55px, hsl(174deg, 77%, 80%) 0px -12px 30px, hsl(174deg, 77%, 80%) 0px 4px 6px, hsl(174deg, 77%, 80%) 0px 12px 13px, hsl(174deg, 77%, 80%) 0px -3px 5px;
+  opacity: 0.8;
+}
+
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 9px;
+  cursor: pointer;
+  background: hsl(224deg, 65%, 95%);
+  border-radius: 5px;
+  -moz-transition: 0.2s;
+  transition: 0.2s;
+  position: relative;
+}
+
+input[type=range]::-moz-range-thumb {
+  height: 33px;
+  width: 33px;
+  border-radius: 100%;
+  background: hsl(174deg, 86%, 45%);
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -11px;
+  -moz-transition: 0.4s ease;
+  transition: 0.4s ease;
+  background-image: url("../images/icon-slider.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+input[type=range]::-moz-range-thumb:active {
+  box-shadow: hsl(174deg, 77%, 80%) 0px 54px 55px, hsl(174deg, 77%, 80%) 0px -12px 30px, hsl(174deg, 77%, 80%) 0px 4px 6px, hsl(174deg, 77%, 80%) 0px 12px 13px, hsl(174deg, 77%, 80%) 0px -3px 5px;
+  opacity: 0.8;
+}
+input[type=range]::-moz-range-thumb:hover {
+  box-shadow: hsl(174deg, 77%, 80%) 0px 54px 55px, hsl(174deg, 77%, 80%) 0px -12px 30px, hsl(174deg, 77%, 80%) 0px 4px 6px, hsl(174deg, 77%, 80%) 0px 12px 13px, hsl(174deg, 77%, 80%) 0px -3px 5px;
+  opacity: 0.8;
+}
+input[type=range]::-moz-range-thumb:focus {
+  box-shadow: hsl(174deg, 77%, 80%) 0px 54px 55px, hsl(174deg, 77%, 80%) 0px -12px 30px, hsl(174deg, 77%, 80%) 0px 4px 6px, hsl(174deg, 77%, 80%) 0px 12px 13px, hsl(174deg, 77%, 80%) 0px -3px 5px;
+  opacity: 0.8;
+}
+
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  border-width: 30px 0;
+  color: transparent;
+  -ms-transition: 0.2s;
+  transition: 0.2s;
+}
+
+input[type=range]::-ms-fill-lower {
+  background: hsl(174deg, 77%, 80%);
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px #222, 0px 0px 2px #2f2f2f;
+  -ms-transition: 0.2s;
+  transition: 0.2s;
+}
+
+input[type=range]::-ms-fill-upper {
+  background: hsl(174deg, 77%, 80%);
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px #222, 0px 0px 2px #2f2f2f;
+  -ms-transition: 0.2s;
+  transition: 0.2s;
+}
+
+input[type=range]::-ms-thumb {
+  box-shadow: 1px 1px 1px #111, 0px 0px 1px #1e1e1e;
+  border: 1px solid white;
+  height: 30px;
+  width: 30px;
+  border-radius: 8px;
+  background-color: yellow;
+  cursor: pointer;
+  -ms-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.line--container {
+  position: relative;
+  height: 2px;
+  width: 100%;
+  margin: 11px 0;
+}
+.line--container .line {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  background: hsl(230deg, 100%, 99%);
+}/*# sourceMappingURL=app.css.map */

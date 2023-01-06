@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="scss/app.css">
+  <link rel="stylesheet" href="scss/reset.css">
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <title>Pricing component</title>
+</head>
+<body>
+
+  <main id="pricer">
+
+    <div class="title-container">
+      <div class="title">
+        <h1>Simple, traffic-based pricing</h1>
+        <h3>Sign-up for our 30-day trial. No credit card required.</h3>
+      </div>
+      <div class="circles"></div>
+    </div>
+
+    <div class="pricer-container">
+      <div class="pageview-number">
+        <span class="pvn-counter">K</span>
+        <span class="pvn-text"></span> 
+        Page views
+      </div> 
+      <input @change="handleRangeInput" 
+            type="range" 
+            id="range" 
+            name="range" 
+            value="0"
+            min="0" 
+            max="4" 
+            step="1" 
+            aria-valuetext="Range slider" 
+      />
+      <div class="price-container">
+        <div class="price-text"><span class="price">8.00</span>&nbsp;/&nbsp;month</div>
+        <div class="toggle-billing-container">
+          <div class="grid">
+            <p>Monthly Billing</p>
+            <label class="switch">
+              <input class="checkbox" type="checkbox" @click="toggleDiscount">
+              <!-- v-model="checked" -->
+              <span class="slider round"></span>
+            </label>
+            <p class="yearlybilling">Yearly Billing&nbsp;<span>-25%</span></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="line--container">
+        <div class="line"></div>
+      </div>
+
+      <div class="lower--grid">
+        <ul>
+          <li>Unlimited websites</li>
+          <li>100% data ownership</li>
+          <li>Email reports</li>
+        </ul>
+        <div class="btn--container">
+          <button class="cta" :click="toggleActive">Start my trial</button> 
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script type="module">
+
+    import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+
+    createApp({
+        data() {
+            return {
+                pageViewCounter: 0,
+                rangeValues: [ 10, 50, 100, 500, 1 ],
+                priceValues: [ '8.00', '12.00', '16.00', '24.00', '36.00' ],
+                inputs: true,
+                buttonClicked: false,
+            }
+        },
+        methods: {
+          toggleActive: function() {
+            this.buttonClicked = true
+            this.buttonClicked  = !this.buttonClicked
+            console.log(buttonClicked);
+          },
+          toggleDiscount: function() {
+            const inputRange = document.querySelector('#range')
+            const checkbox = document.querySelector('.checkbox')
+            const priceOutput = document.querySelector('.price')
+            const currentPrice = this.priceValues[inputRange.value]
+            if (checkbox.checked == true) {
+              const discount = currentPrice * 0.25
+              const parseValues = this.priceValues.map(parseInt)
+              priceOutput.innerHTML = discount.toFixed(2)
+            } else {
+              priceOutput.innerHTML = currentPrice
+            }
+          },
+          handleRangeInput: function() {
+            const inputRange = document.querySelector('#range')
+            const rangeOutput = document.querySelector('.pvn-counter')
+            const priceOutput = document.querySelector('.price')
+            // Update html based on input val
+            rangeOutput.innerHTML = this.rangeValues[inputRange.value]
+            priceOutput.innerHTML = this.priceValues[inputRange.value]
+            // change .pvn-text text based on value
+            const rv = this.rangeValues[inputRange.value]
+            if (rv === this.rangeValues.slice(-1)[0]) {
+              document.querySelector('.pvn-text').innerHTML = 'M'
+            } else {
+              document.querySelector('.pvn-text').innerHTML = 'K'
+            }
+          },
+        },
+        mounted () {
+          const rangeOutput = document.querySelector('.pvn-counter')
+          rangeOutput.innerHTML = this.rangeValues[0];
+          document.querySelector('.pvn-text').innerHTML = 'K'
+
+          if (checkbox.checked == true) {
+              const discount = currentPrice * 0.25
+              const parseValues = this.priceValues.map(parseInt)
+              priceOutput.innerHTML = discount.toFixed(2)
+            } else {
+              priceOutput.innerHTML = currentPrice
+            }
+        }
+    }).mount('#pricer');
+
+  </script>
+  
+</body>
+</html>
